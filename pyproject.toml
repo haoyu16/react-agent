@@ -65,3 +65,27 @@ convention = "google"
 dev = [
     "langgraph-cli[inmem]>=0.1.71",
 ]
+
+[tool.poetry]
+name = "react-agent"
+version = "0.0.1"
+description = "Starter template for making a custom Reasoning and Action agent (using tool calling) in LangGraph."
+authors = ["William Fu-Hinthorn <13333726+hinthornw@users.noreply.github.com>"]
+readme = "README.md"
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+langgraph = ">=0.2.6"
+langchain-openai = ">=0.1.22"
+langchain-anthropic = ">=0.1.23"
+langchain = ">=0.2.14"
+langchain-fireworks = ">=0.1.7"
+python-dotenv = ">=1.0.1"
+langchain-community = ">=0.2.17"
+tavily-python = ">=0.4.0"
+
+[tool.poetry.dev-dependencies]
+mypy = ">=1.11.1"
+ruff = ">=0.6.1"
+langgraph-cli = { version = ">=0.1.71", extras = ["inmem"] }

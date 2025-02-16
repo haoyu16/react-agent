@@ -1,0 +1,18 @@
+# ReAct Agent Configuration
+# This file contains all configurable parameters for the ReAct agent
+
+# The language model to use for the agent's interactions
+# Should be in the form: provider/model-name
+# model: "anthropic/claude-3-5-sonnet-20240620"
+model: "openai/gpt-4o"
+
+# The system prompt that sets the context and behavior for the agent
+# You can customize this to change how the agent behaves
+# The {system_time} placeholder will be automatically replaced with the current UTC time
+system_prompt: |
+  You are a helpful AI assistant.
+
+  System time: {system_time}
+
+# The maximum number of search results to return for each search query
+max_search_results: 10 

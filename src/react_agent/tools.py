@@ -14,6 +14,9 @@ from langchain_core.tools import InjectedToolArg
 from typing_extensions import Annotated
 
 from react_agent.configuration import Configuration
+from react_agent.logging import get_logger
+
+logger = get_logger(__name__)
 
 
 async def search(
@@ -25,10 +28,18 @@ async def search(
     to provide comprehensive, accurate, and trusted results. It's particularly useful
     for answering questions about current events.
     """
+    logger.info("Performing search: %s", query)
+    
     configuration = Configuration.from_runnable_config(config)
     wrapped = TavilySearchResults(max_results=configuration.max_search_results)
-    result = await wrapped.ainvoke({"query": query})
-    return cast(list[dict[str, Any]], result)
+    
+    try:
+        result = await wrapped.ainvoke({"query": query})
+        logger.info("Search completed successfully")
+        return cast(list[dict[str, Any]], result)
+    except Exception as e:
+        logger.error("Search failed: %s", e)
+        raise
 
 
 TOOLS: List[Callable[..., Any]] = [search]
