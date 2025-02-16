@@ -51,10 +51,7 @@ This will install all required dependencies from `pyproject.toml`, including:
 
 To set up the project:
 
-1. Create a `.env` file:
-```bash
-cp .env.example .env
-```
+1. Create a `.env` file
 
 2. Define required API keys in your `.env` file:
 
